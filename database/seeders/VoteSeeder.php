@@ -14,8 +14,10 @@ class VoteSeeder extends Seeder
      */
     public function run()
     {
-        $lat = '-6.218081231433051';
-        $long = '-6.218081231433051';
+        // $lat    = '-6.218081231433051';
+        // $long   = '-6.218081231433051';
+        $lat    = '-6.2087634';
+        $long   = '106.845599';
 
         Vote::create([
             'kandidat_id' => 1,

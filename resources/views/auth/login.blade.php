@@ -3,132 +3,93 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Sistem Informasi Klinik') }}</title>
+    <title>{{ config('app.name', 'E-Voting') }}</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="{{ asset('') }}plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('') }}plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('') }}dist/css/adminlte.min.css?v=3.2.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('auth') }}/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="{{ asset('auth') }}/css/owl.carousel.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('auth') }}/css/bootstrap.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="{{ asset('auth') }}/css/style.css">
 
 </head>
 
-<body class="hold-transition login-page">
+<body>
 
-    <div class="login-box" style="width:auto;">
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="{{ url('/') }}" class="h1">{{ config('app.name', 'Sistem Informasi Klinik') }}</a>
-            </div>
-            <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
-                <form action="{{ route('login') }}" method="POST">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+    <div class="d-lg-flex half">
+        <div class="bg order-2 order-md-1" style="background-image: url('{{ asset('auth') }}/images/bg_1.jpg');"></div>
+        <div class="contents order-1 order-md-2">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-7">
+                        <h3 class="text-center mb-5">Login to <strong>{{ config('app.name', 'E-Voting') }}</strong></h3>
+                        {{-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> --}}
+                        <form action="{{ route('login') }}" method="post" autocomplete="off">
+                            @csrf
+
+                            <div class="form-group first">
+                                <label for="email">Email</label>
+                                <input name="email" type="email" class="form-control" placeholder="your-email@gmail.com" id="email" autofocus>
                             </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+
+                            <div class="form-group last mb-5">
+                                <label for="password">Password</label>
+                                <input name="password" type="password" class="form-control" placeholder="Your Password" id="password">
                             </div>
-                        </div>
+
+                            <input type="submit" value="Log In" class="btn btn-block btn-primary">
+                        </form>
                     </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                        </div>
-                    </div>
-                </form>
-                {{-- <p class="mb-0">
-                    <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
-                </p> --}}
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="{{ asset('') }}plugins/jquery/jquery.min.js"></script>
-    <script src="{{ asset('') }}plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('') }}dist/js/adminlte.min.js?v=3.2.0"></script>
-    <script nonce="0f545a40-616e-4633-890f-4440fb685867">
-        (function(w, d) {
-            ! function(bg, bh, bi, bj) {
-                bg[bi] = bg[bi] || {};
-                bg[bi].executed = [];
-                bg.zaraz = {
-                    deferred: [],
-                    listeners: []
-                };
-                bg.zaraz.q = [];
-                bg.zaraz._f = function(bk) {
-                    return function() {
-                        var bl = Array.prototype.slice.call(arguments);
-                        bg.zaraz.q.push({
-                            m: bk,
-                            a: bl
-                        })
-                    }
-                };
-                for (const bm of ["track", "set", "debug"]) bg.zaraz[bm] = bg.zaraz._f(bm);
-                bg.zaraz.init = () => {
-                    var bn = bh.getElementsByTagName(bj)[0],
-                        bo = bh.createElement(bj),
-                        bp = bh.getElementsByTagName("title")[0];
-                    bp && (bg[bi].t = bh.getElementsByTagName("title")[0].text);
-                    bg[bi].x = Math.random();
-                    bg[bi].w = bg.screen.width;
-                    bg[bi].h = bg.screen.height;
-                    bg[bi].j = bg.innerHeight;
-                    bg[bi].e = bg.innerWidth;
-                    bg[bi].l = bg.location.href;
-                    bg[bi].r = bh.referrer;
-                    bg[bi].k = bg.screen.colorDepth;
-                    bg[bi].n = bh.characterSet;
-                    bg[bi].o = (new Date).getTimezoneOffset();
-                    if (bg.dataLayer)
-                        for (const bt of Object.entries(Object.entries(dataLayer).reduce(((bu, bv) => ({
-                                ...bu[1],
-                                ...bv[1]
-                            }))))) zaraz.set(bt[0], bt[1], {
-                            scope: "page"
-                        });
-                    bg[bi].q = [];
-                    for (; bg.zaraz.q.length;) {
-                        const bw = bg.zaraz.q.shift();
-                        bg[bi].q.push(bw)
-                    }
-                    bo.defer = !0;
-                    for (const bx of [localStorage, sessionStorage]) Object.keys(bx || {}).filter((bz => bz
-                        .startsWith("_zaraz_"))).forEach((by => {
-                        try {
-                            bg[bi]["z_" + by.slice(7)] = JSON.parse(bx.getItem(by))
-                        } catch {
-                            bg[bi]["z_" + by.slice(7)] = bx.getItem(by)
+    <script src="{{ asset('auth') }}/js/jquery-3.3.1.min.js"></script>
+    <script src="{{ asset('auth') }}/js/popper.min.js"></script>
+    <script src="{{ asset('auth') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('auth') }}/js/main.js"></script>
+    <!-- Code injected by live-server -->
+    <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function() {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() ==
+                            "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date()
+                                .valueOf());
                         }
-                    }));
-                    bo.referrerPolicy = "origin";
-                    bo.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(bg[bi])));
-                    bn.parentNode.insertBefore(bo, bn)
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function(msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
                 };
-                ["complete", "interactive"].includes(bh.readyState) ? zaraz.init() : bg.addEventListener(
-                    "DOMContentLoaded", zaraz.init)
-            }(w, d, "zarazData", "script");
-        })(window, document);
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        } else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
     </script>
 
 </body>

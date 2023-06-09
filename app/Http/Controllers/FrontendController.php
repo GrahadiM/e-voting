@@ -32,6 +32,7 @@ class FrontendController extends Controller
 
     public function vote() {
         $data['kandidat'] = $this->kandidatModel->all();
+
         return view('user.vote', $data);
     }
 
@@ -44,7 +45,7 @@ class FrontendController extends Controller
         $data->long        = $request->long;
         $data->save();
 
-        return redirect()->route('frontend.notif');
+        return redirect()->route('frontend.notify_success');
     }
 
     public function perolehan_suara() {
@@ -56,10 +57,15 @@ class FrontendController extends Controller
             $data['total'] += $this->voteModel->where('kandidat_id', $item->id)->count();
         }
         // dd($data);
+
         return view('user.perolehan_suara', $data);
     }
 
-    public function notif() {
-        return view('user.notif');
+    public function notify_success() {
+        return view('user.notify');
+    }
+
+    public function notify_token() {
+        return view('user.notif_token');
     }
 }

@@ -10,14 +10,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto border-bottom border-lg-bottom-0 pt-2 pt-lg-0">
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs('frontend.index') ? 'active' : '' }}" aria-current="page" href="{{ route('frontend.index') }}">Beranda</a></li>
-                <li class="nav-item"><a class="nav-link {{ request()->routeIs('frontend.vote*') ? 'active' : '' }}" href="{{ route('frontend.vote') }}">Vote</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->routeIs('frontend.vote*') || request()->routeIs('frontend.notify*') ? 'active' : '' }}" href="{{ route('frontend.vote') }}">Vote</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs('frontend.perolehan_suara') ? 'active' : '' }}" href="{{ route('frontend.perolehan_suara') }}">Perolehan Suara</a></li>
             </ul>
-            <form class="d-flex py-3 py-lg-0">
+            <div class="d-flex py-3 py-lg-0">
                 <!-- <button class="btn btn-link text-1000 fw-medium order-1 order-lg-0" type="button">Sign in</button>
                 <button class="btn btn-outline-danger rounded-pill order-0" type="submit">Sign Up</button> -->
-                <button class="btn btn-outline-danger rounded-pill order-0" type="submit">Masuk</button>
-            </form>
+                @guest
+                    @if (Route::has('login'))
+                    <button class="btn btn-outline-danger rounded-pill order-0" type="button" onclick="location.href='{{ route('login') }}';">Masuk</button>
+                    @endif
+                @else
+                    <a class="btn btn-outline-danger rounded-pill order-0" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @endguest
+            </div>
         </div>
     </div>
 </nav>

@@ -37,9 +37,13 @@
                             <td>{{ $item->name }}</td>
                             <td>{{ $voting[$loop->iteration - 1] }}</td>
                             <td>
+                                @if (!empty($total) && $total != NULL && $total > 0)
                                 <div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="{{ number_format(($voting[$loop->iteration - 1] / $total) * 100)  }}" aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar text-bg-warning" style="width: {{ number_format(($voting[$loop->iteration - 1] / $total) * 100)  }}%">{{ number_format(($voting[$loop->iteration - 1] / $total) * 100)  }}%</div>
                                 </div>
+                                @else
+                                0%
+                                @endif
                             </td>
                         </tr>
                         @endforeach

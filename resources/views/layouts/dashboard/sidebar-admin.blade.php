@@ -29,21 +29,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.pendaftaran') }}" class="nav-link {{ Request::is('admin/pendaftaran') ? 'active' : '' }}">
+                    <a href="{{ route('admin.data_pemilih') }}" class="nav-link {{ Request::is('admin/data_pemilih') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-edit"></i>
-                        <p>Menu Pendaftaran</p>
+                        <p>Data Pemilih</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.data_pasien') }}" class="nav-link {{ Request::is('admin/data-pasien*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.data_kandidat') }}" class="nav-link {{ Request::is('admin/data-kandidat*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-list"></i>
-                        <p>Menu Data Pasien</p>
+                        <p>Data Kandidat</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.data_dokter') }}" class="nav-link {{ Request::is('admin/data-dokter*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.data_voting') }}" class="nav-link {{ Request::is('admin/data-voting*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-list"></i>
-                        <p>Menu Data Dokter</p>
+                        <p>Data Voting</p>
                     </a>
                 </li>
             </ul>

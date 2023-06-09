@@ -14,7 +14,7 @@
                         <p class="mt-3 mb-4">
                             Selamat Datang Di Pemilihan <span class="fw-medium">Ketua OSIS SMAN 5 </span>Kota Tangerang.
                         </p>
-                        <a class="btn btn-lg btn-danger hover-top" href="vote.html">Voting Sekarang</a>
+                        <a class="btn btn-lg btn-danger hover-top" href="{{ route('frontend.vote') }}">Voting Sekarang</a>
                     </div>
                 </div>
             </div>

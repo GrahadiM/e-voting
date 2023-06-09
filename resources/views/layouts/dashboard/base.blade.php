@@ -28,8 +28,6 @@
         <!-- Main Sidebar Container -->
         @if (auth()->user()->hasRole('admin'))
             @include('layouts.dashboard.sidebar-admin')
-        @else
-            @include('layouts.dashboard.sidebar-dokter')
         @endif
 
         <!-- Content Wrapper. Contains page content -->

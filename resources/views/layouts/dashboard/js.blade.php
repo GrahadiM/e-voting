@@ -36,7 +36,7 @@
 <!-- dropzonejs -->
 <script src="{{ asset('') }}plugins/dropzone/min/dropzone.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('') }}dist/js/pages/dashboard2.js"></script>
+{{-- <script src="{{ asset('') }}dist/js/pages/dashboard2.js"></script> --}}
 <!-- Footer -->
 <script>
     const date = new Date();

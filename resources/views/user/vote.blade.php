@@ -21,7 +21,7 @@
     <!-- <section> begin ============================-->
     <section class="py-4">
         <div class="container">
-            <div class="row justify-content-evenly">
+            <div class="row justify-content-evenly"><span class="lang"></span>, <span class="long"></span>
                 @foreach ($kandidat as $item)
                 <div class="col-md-3 col-sm-12 card text-center py-5 border-0 shadow-sm">
                     <div class="card-header bg-primary text-white fw-bold">{{ $item->id < 10 ? '0'.$item->id : $item->id }}</div>
@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <h5>{{ $item->name }}</h5>
                         <div class="row">
-                            <a href="#" class="col-12 btn btn-primary rounded-3 btn-block mt-2" data-bs-toggle="modal" data-bs-target="#vote-{{ $item->id < 10 ? '0'.$item->id : $item->id }}">Vote</a>
+                            <a href="#" class="col-12 btn btn-primary rounded-3 btn-block voteClick mt-2" data-bs-toggle="modal" data-bs-target="#vote-{{ $item->id < 10 ? '0'.$item->id : $item->id }}">Vote</a>
                             <a href="#" class="col-12 btn btn-outline-primary rounded-3 btn-block mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $item->id < 10 ? '0'.$item->id : $item->id }}">Lihat Detail</a>
 
                             <!-- Modal Vote -->
@@ -42,8 +42,8 @@
                                                 @csrf
 
                                                 <input type="hidden" name="id" value="{{ $item->id }}">
-                                                <input type="hidden" name="lat" value="">
-                                                <input type="hidden" name="long" value="">
+                                                <input type="hidden" class="lat" name="lat" value="">
+                                                <input type="hidden" class="long" name="long" value="">
                                                 <div class="row justify-content-evenly">
                                                     <button type="submit" class="col-md-5 rounded-3 btn btn-primary mr-2" style="padding: 12px 5px;">Ya, lanjut memilih</button>
                                                     <button type="button" class="col-md-5 rounded-3 btn btn-outline-danger ml-2" data-bs-dismiss="modal" style="padding: 12px 5px;">Tidak, ada perubahan</button>
@@ -105,4 +105,29 @@
     <!-- <section> close ============================-->
     <!-- ============================================-->
 
+@endsection
+
+@section('js')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(".voteClick").click(function(event) {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(success, error);
+            } else {
+                alert('browser anda tidak mendukung geolocation');
+            }
+
+            function success(position) {
+                const { latitude, longitude } = position.coords;
+                console.log(latitude, longitude);
+
+                $('.lat').val(latitude);
+                $('.long').val(longitude);
+            }
+
+            function error(err) {
+                alert(err.message);
+            }
+        });
+    </script>
 @endsection

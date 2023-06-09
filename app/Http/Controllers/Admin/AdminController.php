@@ -4,20 +4,50 @@ namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 use App\Models\User;
-use App\Models\Dokter;
-use App\Models\Pasien;
+use App\Models\Vote;
+use App\Models\Kandidat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
+    private $voteModel;
+    private $userModel;
+    private $pemilihModel;
+    private $kandidatModel;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->voteModel     = new Vote();
+        $this->userModel     = new User();
+        $this->pemilihModel  = new User();
+        $this->kandidatModel = new Kandidat();
+    }
+
     public function dashboard() {
-        $data['title'] = 'Dashboard';
+        $data['total']      = 0;
+        $data['title']      = 'Dashboard';
+        $data['pemilih']    = $this->userModel->where('id','!=',1)->count();
+        $data['kandidat']   = $this->kandidatModel->count();
+        $data['kandidats']  = $this->kandidatModel->all();
+        $data['vote']       = $this->voteModel->count();
+        foreach($data['kandidats'] as $item){
+            $data['name'][]     = $item->name;
+            $data['voting'][]   = $this->voteModel->where('kandidat_id', $item->id)->count();
+            $data['total']      += $this->voteModel->where('kandidat_id', $item->id)->count();
+        }
+        $data['name']       = json_encode($data['name']);
+        $data['total_vote'] = json_encode($data['voting']);
         return view('admin.dashboard', $data);
     }
 
     public function pendaftaran() {
-        $data['title'] = 'Menu Pendaftaran Pasien';
+        $data['title']      = 'Pendaftaran Pasien';
         return view('admin.pendaftaran', $data);
     }
 
@@ -34,6 +64,24 @@ class AdminController extends Controller
         $data->mother_name = $request->mother_name;
         $data->save();
         return redirect()->back();
+    }
+
+    public function data_pemilih() {
+        $data['title']      = 'Data Pemilih';
+        $data['pemilih']    = $this->userModel->where('id','!=',1)->get();
+        return view('admin.data-pemilih', $data);
+    }
+
+    public function data_kandidat() {
+        $data['title']      = 'Data Kandidat';
+        $data['kandidat']   = $this->kandidatModel->all();
+        return view('admin.data-kandidat', $data);
+    }
+
+    public function data_voting() {
+        $data['title']  = 'Data Voting';
+        $data['vote']   = $this->voteModel->all();
+        return view('admin.data-voting', $data);
     }
 
     public function data_pasien() {
