@@ -43,7 +43,9 @@
                                     <td>{{ $item->kelas.' '.$item->jurusan }}</td>
                                     <td>{!! 'Visi : '.$item->visi.'<br>Misi : '.$item->misi !!}</td>
                                     <td>{{ $item->jabatan }}</td>
-                                    <td>{{ $item->photo }}</td>
+                                    <td>
+                                        <img src="{{ asset('images') .'/'. $item->photo }}" class="img-fluid" style="height: 150px" alt="photo-kandidat">
+                                    </td>
                                     <td>
                                         <button type="button" class="btn bg-gradient-primary btn-sm" onclick="location.href='edit.html'"><i class="fa-sm fas fa-pencil-alt"></i></button>
                                         <button type="button" class="btn bg-gradient-danger btn-sm" onclick="location.href='delete.html'"><i class="fa-sm fas fa-trash-alt"></i></button>
