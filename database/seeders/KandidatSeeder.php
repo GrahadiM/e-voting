@@ -24,7 +24,7 @@ class KandidatSeeder extends Seeder
         Kandidat::create([
             'name'      => 'Gilang Saefullah',
             'kelas'     => 'XI',
-            'jurusan'   => 'IPA 1',
+            'jurusan'   => 'IPA A',
             'jabatan'   => 'Ketua OSIS',
             'photo'     => 'candidate-icon.png',
             'visi'      => $visi,
@@ -34,7 +34,7 @@ class KandidatSeeder extends Seeder
         Kandidat::create([
             'name'      => 'Aldin Munawar',
             'kelas'     => 'XI',
-            'jurusan'   => 'IPA 1',
+            'jurusan'   => 'IPA A',
             'jabatan'   => 'Ketua OSIS',
             'photo'     => 'candidate-icon.png',
             'visi'      => $visi,
@@ -44,7 +44,7 @@ class KandidatSeeder extends Seeder
         Kandidat::create([
             'name'      => 'Krisna Tri Anggara',
             'kelas'     => 'XI',
-            'jurusan'   => 'IPA 1',
+            'jurusan'   => 'IPA A',
             'jabatan'   => 'Ketua OSIS',
             'photo'     => 'candidate-icon.png',
             'visi'      => $visi,

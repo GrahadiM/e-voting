@@ -63,8 +63,6 @@ class AdminController extends Controller
     }
 
     public function data_pemilih_store(Request $request) {
-        $data['title'] = 'Tambah Data Pemilih';
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -72,6 +70,7 @@ class AdminController extends Controller
         ]);
 
         $data           = $this->pemilihModel;
+
         $data->name     = $request->name;
         $data->email    = $request->email;
         $data->password = Hash::make($request->password);
@@ -103,6 +102,7 @@ class AdminController extends Controller
         ]);
 
         $data           = $this->pemilihModel->where('id', $id)->first();
+
         $data->name     = $request->name;
         $data->nisn     = $request->nisn;
         $data->gender   = $request->gender;
@@ -128,6 +128,58 @@ class AdminController extends Controller
         $data['title']      = 'Data Kandidat';
         $data['kandidat']   = $this->kandidatModel->all();
         return view('admin.data-kandidat', $data);
+    }
+
+    public function data_kandidat_create() {
+        $data['title']      = 'Tambah Data Kandidat';
+        $data['edit']       = false;
+        $data['users']      = User::where('id','!=','1')->get();
+        return view('admin.data-kandidat-addEdit', $data);
+    }
+
+    public function data_kandidat_store(Request $request) {
+        $data           = $this->kandidatModel;
+
+        $data->name     = $request->name;
+        $data->jabatan  = $request->jabatan;
+        $data->jurusan  = $request->jurusan;
+        $data->kelas    = $request->kelas;
+        $data->visi     = $request->visi;
+        $data->misi     = $request->misi;
+
+        $data->save();
+
+        return redirect()->route('admin.data_kandidat.index');
+    }
+
+    public function data_kandidat_edit($id) {
+        $data['title']      = 'Ubah Data Kandidat';
+        $data['edit']       = true;
+        $data['kandidat']   = $this->kandidatModel->where('id', $id)->first();
+        $data['users']      = $this->userModel->where('id','!=','1')->get();
+        return view('admin.data-kandidat-addEdit', $data);
+    }
+
+    public function data_kandidat_update(Request $request, $id) {
+        $data           = $this->kandidatModel->where('id', $id)->first();
+
+        $data->name     = $request->name;
+        $data->jabatan  = $request->jabatan;
+        $data->jurusan  = $request->jurusan;
+        $data->kelas    = $request->kelas;
+        $data->visi     = $request->visi;
+        $data->misi     = $request->misi;
+
+        $data->save();
+
+        return redirect()->route('admin.data_kandidat.index');
+    }
+
+    public function data_kandidat_delete($id) {
+        $data = $this->kandidatModel->where('id', $id)->first();
+        $data->delete();
+
+        return redirect()->route('admin.data_kandidat.index');
     }
 
     public function data_voting() {

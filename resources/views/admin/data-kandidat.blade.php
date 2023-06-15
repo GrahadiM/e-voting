@@ -48,8 +48,12 @@
                                         <img src="{{ asset('images') .'/'. $item->photo }}" class="img-fluid" style="height: 150px" alt="photo-kandidat">
                                     </td>
                                     <td>
-                                        <button type="button" class="btn bg-gradient-primary btn-sm" onclick="location.href='edit.html'"><i class="fa-sm fas fa-pencil-alt"></i></button>
-                                        <button type="button" class="btn bg-gradient-danger btn-sm" onclick="location.href='delete.html'"><i class="fa-sm fas fa-trash-alt"></i></button>
+                                        <button type="button" class="btn bg-gradient-primary btn-sm" onclick="location.href='{{ route('admin.data_kandidat.edit', $item->id) }}'"><i class="fa-sm fas fa-pencil-alt"></i></button>
+                                        <button type="button" class="btn bg-gradient-danger btn-sm" onclick="event.preventDefault(); document.getElementById('form-delete').submit();"><i class="fa-sm fas fa-trash-alt"></i></button>
+                                        <form id="form-delete" method="POST" action="{{ route('admin.data_kandidat.delete', $item->id) }}">
+                                            @method('DELETE')
+                                            @csrf
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
