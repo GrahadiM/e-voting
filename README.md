@@ -38,37 +38,37 @@ This is E-Voting uses Laravel 8.
 <details>
 	<summary>Home Page</summary>
 	
-![Home Page](public/images/home.png)
+![Home Page](public/images/screenshot/index.png)
 </details>
 
 <details>
-	<summary>Category</summary>
+	<summary>Kandidat</summary>
 	
-![Category](public/images/category.png)
+![Kandidat](public/images/screenshot/kandidat.png)
 </details>
 
 <details>
-	<summary>Job List</summary>
+	<summary>Detail Kandidat</summary>
 	
-![Job List](public/images/job-list.png)
+![Detail Kandidat](public/images/screenshot/detail-kandidat.png)
 </details>
 
 <details>
-	<summary>Job Detail</summary>
+	<summary>Pilih Kandidat</summary>
 	
-![Job Detail](public/images/job-detail.png)
+![Pilih Kandidat](public/images/screenshot/vote-kandidat.png)
 </details>
 
 <details>
-	<summary>About</summary>
+	<summary>Jumlah Vote</summary>
 	
-![About](public/images/about.png)
+![Jumlah Vote](public/images/screenshot/jumlah-vote.png)
 </details>
 
 <details>
-	<summary>Contact</summary>
+	<summary>Notify</summary>
 	
-![Contact](public/images/contact.png)
+![Notify](public/images/screenshot/notify.png)
 </details>
 
 ## Installation

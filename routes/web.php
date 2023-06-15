@@ -9,10 +9,10 @@ Route::controller(FrontendController::class)->name('frontend.')->group(function 
     Route::get('/', 'index')->name('index');
 
     Route::middleware(['auth'])->group(function () {
-        Route::middleware(['vote'])->group(function () {
+        // Route::middleware(['vote'])->group(function () {
             Route::get('/vote', 'vote')->name('vote');
             Route::post('/votePost', 'votePost')->name('votePost');
-        });
+        // });
         Route::get('/perolehan-suara', 'perolehan_suara')->name('perolehan_suara');
         Route::get('/notify-success', 'notify_success')->name('notify_success');
         Route::get('/notify-token', 'notify_token')->name('notify_token');
