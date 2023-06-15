@@ -23,25 +23,25 @@
                 data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('admin.dashboard') }}" class="nav-link {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.data_pemilih') }}" class="nav-link {{ Request::is('admin/data_pemilih') ? 'active' : '' }}">
+                    <a href="{{ route('admin.data_pemilih.index') }}" class="nav-link {{ Request::is('admin/data-pemilih*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>Data Pemilih</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.data_kandidat') }}" class="nav-link {{ Request::is('admin/data-kandidat*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.data_kandidat.index') }}" class="nav-link {{ Request::is('admin/data-kandidat*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-list"></i>
                         <p>Data Kandidat</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.data_voting') }}" class="nav-link {{ Request::is('admin/data-voting*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.data_voting.index') }}" class="nav-link {{ Request::is('admin/data-voting*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-list"></i>
                         <p>Data Voting</p>
                     </a>

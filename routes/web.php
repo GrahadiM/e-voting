@@ -22,15 +22,32 @@ Route::controller(FrontendController::class)->name('frontend.')->group(function 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-    Route::prefix('admin')->name('admin.')->group(function () {
-        Route::controller(AdminController::class)->group(function () {
-            Route::get('/dashboard', 'dashboard')->name('dashboard');
-            Route::get('/pendaftaran', 'pendaftaran')->name('pendaftaran');
-            Route::post('/pendaftaran-post', 'pendaftaran_post')->name('pendaftaran_post');
+    Route::controller(AdminController::class)->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('/pendaftaran', 'pendaftaran')->name('pendaftaran');
+        Route::post('/pendaftaran-post', 'pendaftaran_post')->name('pendaftaran_post');
 
-            Route::get('/data-pemilih', 'data_pemilih')->name('data_pemilih');
-            Route::get('/data-kandidat', 'data_kandidat')->name('data_kandidat');
-            Route::get('/data-voting', 'data_voting')->name('data_voting');
+
+        Route::prefix('data-pemilih')->name('data_pemilih.')->group(function () {
+            Route::get('/', 'data_pemilih')->name('index');
+            Route::get('/create', 'data_pemilih_create')->name('create');
+            Route::post('/store', 'data_pemilih_store')->name('store');
+            Route::get('/edit/{id}', 'data_pemilih_edit')->name('edit');
+            Route::put('/update/{id}', 'data_pemilih_update')->name('update');
+            Route::delete('/delete/{id}', 'data_pemilih_delete')->name('delete');
+        });
+
+        Route::prefix('data-kandidat')->name('data_kandidat.')->group(function () {
+            Route::get('/', 'data_kandidat')->name('index');
+            Route::get('/create', 'data_kandidat_create')->name('create');
+            Route::post('/store', 'data_kandidat_store')->name('store');
+            Route::get('/edit/{id}', 'data_kandidat_edit')->name('edit');
+            Route::put('/update/{id}', 'data_kandidat_update')->name('update');
+            Route::delete('/delete/{id}', 'data_kandidat_delete')->name('delete');
+        });
+
+        Route::prefix('data-voting')->name('data_voting.')->group(function () {
+            Route::get('/', 'data_voting')->name('index');
         });
     });
 });

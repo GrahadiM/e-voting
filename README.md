@@ -1,6 +1,6 @@
-# Job Finder with Laravel 8
+# E-Voting with Laravel 8
 ## Description
-This is Job Finder uses Laravel 8.
+This is E-Voting uses Laravel 8.
 
 ## Technologies
 ### Frontend
@@ -75,12 +75,12 @@ This is Job Finder uses Laravel 8.
 ### Clone Repo
 
 ```bash
-git clone https://github.com/GrahadiM/job-finder.git
+git clone https://github.com/GrahadiM/e-voting.git
 ```
 ### Go to folder
 
 ```bash
-cd job-finder
+cd e-voting
 ```
 ### Install App with composer
 

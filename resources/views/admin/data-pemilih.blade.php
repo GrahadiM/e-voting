@@ -21,6 +21,7 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
+                    <button type="button" class="btn bg-gradient-info btn-sm" onclick="location.href='{{ route('admin.data_pemilih.create') }}'"><i class="fa-sm fas fa-plus"></i> Tambah Data</button>
                 </div>
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -47,8 +48,12 @@
                                     <td>{{ $item->jurusan }}</td>
                                     <td>{{ $item->created_at->format('d F Y') }}</td>
                                     <td>
-                                        <button type="button" class="btn bg-gradient-primary btn-sm" onclick="location.href='edit.html'"><i class="fa-sm fas fa-pencil-alt"></i></button>
-                                        <button type="button" class="btn bg-gradient-danger btn-sm" onclick="location.href='delete.html'"><i class="fa-sm fas fa-trash-alt"></i></button>
+                                        <button type="button" class="btn bg-gradient-primary btn-sm" onclick="location.href='{{ route('admin.data_pemilih.edit', $item->id) }}'"><i class="fa-sm fas fa-pencil-alt"></i></button>
+                                        <button type="button" class="btn bg-gradient-danger btn-sm" onclick="event.preventDefault(); document.getElementById('form-delete').submit();"><i class="fa-sm fas fa-trash-alt"></i></button>
+                                        <form id="form-delete" method="POST" action="{{ route('admin.data_pemilih.delete', $item->id) }}">
+                                            @method('DELETE')
+                                            @csrf
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -103,7 +108,7 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "buttons": ["pdf", "print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,

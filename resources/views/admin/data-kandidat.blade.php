@@ -21,6 +21,7 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
+                    <button type="button" class="btn bg-gradient-info btn-sm" onclick="location.href='{{ route('admin.data_kandidat.create') }}'"><i class="fa-sm fas fa-plus"></i> Tambah Data</button>
                 </div>
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -102,7 +103,7 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "buttons": ["pdf", "print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,

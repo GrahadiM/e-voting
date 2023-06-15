@@ -31,11 +31,11 @@ class UsersTableSeeder extends Seeder
         $roleAdmin->syncPermissions($permissionsAdmin);
         $admin->assignRole([$roleAdmin->id]);
 
-        $user = User::create([
+        $user1 = User::create([
             'name'      => 'User 1',
             'nisn'      => '123456789',
             'kelas'     => 'XII',
-            'jurusan'   => 'IPA',
+            'jurusan'   => 'IPA A',
             'gender'    => 'Laki-laki',
             'email'     => 'user@test.com',
             'password'  => bcrypt('password'),
@@ -43,11 +43,11 @@ class UsersTableSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        $user = User::create([
+        $user2 = User::create([
             'name'      => 'User 2',
             'nisn'      => '123456789',
             'kelas'     => 'XII',
-            'jurusan'   => 'IPA',
+            'jurusan'   => 'IPA A',
             'gender'    => 'Laki-laki',
             'email'     => 'user2@test.com',
             'password'  => bcrypt('password'),
@@ -55,11 +55,11 @@ class UsersTableSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        $user = User::create([
+        $user3 = User::create([
             'name'      => 'User 3',
             'nisn'      => '123456789',
             'kelas'     => 'XII',
-            'jurusan'   => 'IPA',
+            'jurusan'   => 'IPA A',
             'gender'    => 'Laki-laki',
             'email'     => 'user3@test.com',
             'password'  => bcrypt('password'),
@@ -67,11 +67,11 @@ class UsersTableSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        $user = User::create([
+        $user4 = User::create([
             'name'      => 'User 4',
             'nisn'      => '123456789',
             'kelas'     => 'XII',
-            'jurusan'   => 'IPA',
+            'jurusan'   => 'IPA A',
             'gender'    => 'Laki-laki',
             'email'     => 'user4@test.com',
             'password'  => bcrypt('password'),
@@ -79,11 +79,11 @@ class UsersTableSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        $user = User::create([
+        $user5 = User::create([
             'name'      => 'User 5',
             'nisn'      => '123456789',
             'kelas'     => 'XII',
-            'jurusan'   => 'IPA',
+            'jurusan'   => 'IPA A',
             'gender'    => 'Laki-laki',
             'email'     => 'user5@test.com',
             'password'  => bcrypt('password'),
@@ -99,6 +99,10 @@ class UsersTableSeeder extends Seeder
             'D-dashboard',
         ];
         $roleUser->syncPermissions($permissions);
-        $user->assignRole([$roleUser->id]);
+        $user1->assignRole([$roleUser->id]);
+        $user2->assignRole([$roleUser->id]);
+        $user3->assignRole([$roleUser->id]);
+        $user4->assignRole([$roleUser->id]);
+        $user5->assignRole([$roleUser->id]);
     }
 }
