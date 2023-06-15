@@ -24,8 +24,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(AdminController::class)->prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', 'dashboard')->name('dashboard');
-        Route::get('/pendaftaran', 'pendaftaran')->name('pendaftaran');
-        Route::post('/pendaftaran-post', 'pendaftaran_post')->name('pendaftaran_post');
 
 
         Route::prefix('data-pemilih')->name('data_pemilih.')->group(function () {
