@@ -43,7 +43,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="fw-bolder text-1000 mb-0">1050 </p>
+                                        <p class="fw-bolder text-1000 mb-0">{{ $pemilih }} </p>
                                         <p class="mb-0">Jumlah Pemilih </p>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="fw-bolder text-1000 mb-0">3 </p>
+                                        <p class="fw-bolder text-1000 mb-0">{{ $kandidat }} </p>
                                         <p class="mb-0">Jumlah Kandidat </p>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="fw-bolder text-1000 mb-0">950 </p>
+                                        <p class="fw-bolder text-1000 mb-0">{{ $vote }} </p>
                                         <p class="mb-0">Jumlah Suara </p>
                                     </div>
                                 </div>

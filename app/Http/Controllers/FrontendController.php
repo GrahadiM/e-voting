@@ -27,6 +27,9 @@ class FrontendController extends Controller
     }
 
     public function index() {
+        $data['pemilih']    = $this->userModel->where('id','!=',1)->count();
+        $data['kandidat']   = $this->kandidatModel->count();
+        $data['vote']       = $this->voteModel->count();
         return view('user.index');
     }
 
