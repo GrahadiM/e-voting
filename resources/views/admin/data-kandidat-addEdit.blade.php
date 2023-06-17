@@ -61,27 +61,27 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="Nama">Nama</label>
-                                <input type="text" name="name" class="form-control" id="Nama" value="{{ $edit ? $kandidat->name : '' }}" placeholder="Masukan Nama">
+                                <input type="text" name="name" class="form-control" id="Nama" value="{{ $edit ? $kandidat->name : '' }}" required placeholder="Masukan Nama">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="jabatan">Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control" id="jabatan" value="{{ $edit ? $kandidat->jabatan : '' }}" placeholder="Masukan Jabatan">
+                                <input type="text" name="jabatan" class="form-control" id="jabatan" value="{{ $edit ? $kandidat->jabatan : '' }}" required placeholder="Masukan Jabatan">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="jurusan">Jurusan</label>
-                                <input type="text" name="jurusan" class="form-control" id="jurusan" value="{{ $edit ? $kandidat->jurusan : '' }}" placeholder="Masukan Jurusan">
+                                <input type="text" name="jurusan" class="form-control" id="jurusan" value="{{ $edit ? $kandidat->jurusan : '' }}" required placeholder="Masukan Jurusan">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="kelas">Kelas</label>
-                                <input type="text" name="kelas" class="form-control" id="kelas" value="{{ $edit ? $kandidat->kelas : '' }}" placeholder="Masukan Kelas">
+                                <input type="text" name="kelas" class="form-control" id="kelas" value="{{ $edit ? $kandidat->kelas : '' }}" required placeholder="Masukan Kelas">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="visi">Visi</label>
-                                <textarea name="visi" class="summernote">{!! $edit ? $kandidat->visi : '' !!}</textarea>
+                                <textarea name="visi" class="summernote" required>{!! $edit ? $kandidat->visi : '' !!}</textarea>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="misi">Misi</label>
-                                <textarea name="misi" class="summernote">{!! $edit ? $kandidat->misi : '' !!}</textarea>
+                                <textarea name="misi" class="summernote" required>{!! $edit ? $kandidat->misi : '' !!}</textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary mt-4">Submit</button>

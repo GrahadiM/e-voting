@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.data_kandidat.index') }}" class="nav-link {{ Request::is('admin/data-kandidat*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-list"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>Data Kandidat</p>
                     </a>
                 </li>
