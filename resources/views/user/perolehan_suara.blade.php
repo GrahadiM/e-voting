@@ -4,11 +4,11 @@
 
     <!-- ============================================-->
     <!-- <section> begin ============================-->
-    <section class="pb-1">
+    <section class="pb-1 mb-4">
         <div class="container">
             <div class="row flex-center">
                 <div class="col-12 mt-5 text-center">
-                    <h1 class="fw-medium" style="text-transform:uppercase;">Hasil Perhitungan Suara Calon Ketua OSIS SMAN 5 Kota Tangerang</h1>
+                    <h3 class="fw-medium" style="text-transform:uppercase;">Hasil Perhitungan Suara Calon Ketua OSIS SMAN 5 Kota Tangerang</h3>
                 </div>
             </div>
         </div>
