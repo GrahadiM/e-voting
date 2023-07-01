@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Vote;
+use App\Models\Jadwal;
 use App\Models\Kandidat;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -18,6 +20,7 @@ class AdminController extends Controller
     private $userModel;
     private $pemilihModel;
     private $kandidatModel;
+    private $jadwalModel;
 
     /**
      * Create a new controller instance.
@@ -30,6 +33,7 @@ class AdminController extends Controller
         $this->userModel     = new User();
         $this->pemilihModel  = new User();
         $this->kandidatModel = new Kandidat();
+        $this->jadwalModel   = new Jadwal();
     }
 
     public function dashboard() {
@@ -47,6 +51,25 @@ class AdminController extends Controller
         $data['name']       = json_encode($data['name']);
         $data['total_vote'] = json_encode($data['voting']);
         return view('admin.dashboard', $data);
+    }
+
+    public function thumbnail() {
+        $data['title']      = 'Foto Profile';
+        $data['user']       = $this->userModel->where('id', Auth::user()->id)->first();
+        return view('admin.thumbnail', $data);
+    }
+
+    public function thumbnail_store(Request $request) {
+        $data           = $this->userModel->where('id', Auth::user()->id)->first();
+        $thumbnail      = $request->thumbnail;
+        if ($thumbnail) {
+            $destinationPath    = 'images/thumbnail/';
+            $thumbnailImage     = date('YmdHis') . "." . $thumbnail->getClientOriginalExtension();
+            $thumbnail->move($destinationPath, $thumbnailImage);
+            $data->thumbnail    = $thumbnailImage;
+        }
+        $data->save();
+        return redirect()->route('admin.thumbnail');
     }
 
     public function data_pemilih() {
@@ -186,6 +209,26 @@ class AdminController extends Controller
         $data['title']  = 'Data Voting';
         $data['vote']   = $this->voteModel->all();
         return view('admin.data-voting', $data);
+    }
+
+    public function data_jadwal() {
+        $data['title']  = 'Data Jadwal';
+        $id             = 1;
+        $data['jadwal'] = $this->jadwalModel->find($id);
+        return view('admin.data-jadwal', $data);
+    }
+
+    public function data_jadwal_update(Request $request) {
+        $id             = 1;
+        $data           = $this->jadwalModel->where('id', $id)->first();
+
+        $data->start    = $request->jadwal_start;
+        $data->end      = $request->jadwal_end;
+        // dd($data);
+
+        $data->save();
+
+        return redirect()->route('admin.data_jadwal.index');
     }
 
     public function gantiformat($nomorhp) {

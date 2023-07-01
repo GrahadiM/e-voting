@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'vote' => \App\Http\Middleware\CekVote::class,
+        'jadwalVoting' => \App\Http\Middleware\JadwalVoting::class,
     ];
 }

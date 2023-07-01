@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Vote;
+use App\Models\Jadwal;
 use App\Models\Kandidat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,7 @@ class FrontendController extends Controller
     private $voteModel;
     private $userModel;
     private $kandidatModel;
+    private $jadwalModel;
 
     /**
      * Create a new controller instance.
@@ -24,12 +26,14 @@ class FrontendController extends Controller
         $this->voteModel     = new Vote();
         $this->userModel     = new User();
         $this->kandidatModel = new Kandidat();
+        $this->jadwalModel   = new Jadwal();
     }
 
     public function index() {
         $data['pemilih']    = $this->userModel->where('id','!=',1)->count();
         $data['kandidat']   = $this->kandidatModel->count();
         $data['vote']       = $this->voteModel->count();
+        $data['jadwal']     = $this->jadwalModel->find(1);
         return view('user.index', $data);
     }
 
@@ -70,5 +74,11 @@ class FrontendController extends Controller
 
     public function notify_token() {
         return view('user.notif_token');
+    }
+
+    public function notify_jadwal() {
+        $data['jadwal'] = $this->jadwalModel->find(1);
+
+        return view('user.notif_jadwal', $data);
     }
 }

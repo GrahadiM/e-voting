@@ -14,6 +14,9 @@
                         <p class="mt-3 mb-4">
                             Selamat Datang Di Pemilihan <span class="fw-medium">Ketua OSIS SMAN 5 </span>Kota Tangerang.
                         </p>
+                        <p class="mt-3 mb-4">
+                            Jadwal Voting : <span class="fw-medium">{{ date('l, d F Y H:i', strtotime($jadwal->start)) ." - ". date('l, d F Y H:i', strtotime($jadwal->end)) }}</span>
+                        </p>
                         <a class="btn btn-lg btn-danger hover-top" href="{{ route('frontend.vote') }}">Voting Sekarang</a>
                     </div>
                 </div>

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             KandidatSeeder::class,
             VoteSeeder::class,
+            JadwalSeeder::class,
         ]);
     }
 }
