@@ -169,6 +169,13 @@ class AdminController extends Controller
         $data->kelas    = $request->kelas;
         $data->visi     = $request->visi;
         $data->misi     = $request->misi;
+        $thumbnail      = $request->thumbnail;
+        if ($thumbnail) {
+            $destinationPath    = 'images/kandidat/';
+            $thumbnailImage     = date('YmdHis') . "." . $thumbnail->getClientOriginalExtension();
+            $thumbnail->move($destinationPath, $thumbnailImage);
+            $data->photo    = $thumbnailImage;
+        }
 
         $data->save();
 
@@ -192,6 +199,13 @@ class AdminController extends Controller
         $data->kelas    = $request->kelas;
         $data->visi     = $request->visi;
         $data->misi     = $request->misi;
+        $thumbnail      = $request->thumbnail;
+        if ($thumbnail) {
+            $destinationPath    = 'images/kandidat/';
+            $thumbnailImage     = date('YmdHis') . "." . $thumbnail->getClientOriginalExtension();
+            $thumbnail->move($destinationPath, $thumbnailImage);
+            $data->photo    = $thumbnailImage;
+        }
 
         $data->save();
 

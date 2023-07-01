@@ -45,7 +45,7 @@
                                     <td>{!! 'Visi : '.$item->visi.'<br>Misi : '.$item->misi !!}</td>
                                     <td>{{ $item->jabatan }}</td>
                                     <td>
-                                        <img src="{{ asset('images') .'/'. $item->photo }}" class="img-fluid" style="height: 150px" alt="photo-kandidat">
+                                        <img src="{{ asset('') }}images/kandidat/{{ $item->photo }}" class="img-fluid" style="height: 150px" alt="photo-kandidat">
                                     </td>
                                     <td>
                                         <button type="button" class="btn bg-gradient-primary btn-sm" onclick="location.href='{{ route('admin.data_kandidat.edit', $item->id) }}'"><i class="fa-sm fas fa-pencil-alt"></i></button>

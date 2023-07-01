@@ -51,10 +51,10 @@
                 </div>
                 <div class="card-body">
                     @if (!$edit)
-                    <form action="{{ route('admin.data_kandidat.store') }}" method="POST">
+                    <form action="{{ route('admin.data_kandidat.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                     @else
-                    <form action="{{ route('admin.data_kandidat.update', $kandidat->id) }}" method="POST">
+                    <form action="{{ route('admin.data_kandidat.update', $kandidat->id) }}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                     @endif
@@ -64,14 +64,18 @@
                                 <input type="text" name="name" class="form-control" id="Nama" value="{{ $edit ? $kandidat->name : '' }}" required placeholder="Masukan Nama">
                             </div>
                             <div class="form-group col-md-6">
+                                <label for="Foto Profile">Foto Profile</label>
+                                <input type="file" name="thumbnail" class="form-control" id="Foto Profile" placeholder="Masukan Foto Profile">
+                            </div>
+                            <div class="form-group col-md-4">
                                 <label for="jabatan">Jabatan</label>
                                 <input type="text" name="jabatan" class="form-control" id="jabatan" value="{{ $edit ? $kandidat->jabatan : '' }}" required placeholder="Masukan Jabatan">
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="jurusan">Jurusan</label>
                                 <input type="text" name="jurusan" class="form-control" id="jurusan" value="{{ $edit ? $kandidat->jurusan : '' }}" required placeholder="Masukan Jurusan">
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="kelas">Kelas</label>
                                 <input type="text" name="kelas" class="form-control" id="kelas" value="{{ $edit ? $kandidat->kelas : '' }}" required placeholder="Masukan Kelas">
                             </div>
