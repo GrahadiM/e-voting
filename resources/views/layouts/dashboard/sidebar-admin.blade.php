@@ -46,6 +46,12 @@
                         <p>Data Voting</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.data_jadwal.index') }}" class="nav-link {{ Request::is('admin/data-jadwal*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>Data Jadwal</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
